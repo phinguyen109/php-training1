@@ -1,0 +1,56 @@
+FROM php:8.3.9-apache
+
+# Composer version
+ENV COMPOSER_VERSION=2.7.7
+
+RUN apt-get update \
+    && apt-get install -y \
+    curl \
+    zip \
+    unzip \
+    git \
+    supervisor \
+    libpng-dev \
+    libpq-dev \
+    libzip-dev \
+    libexif-dev \
+    gnupg \
+    tzdata \
+    pkg-config \
+    libssl-dev \
+    && docker-php-ext-install \
+    bcmath \
+    gd \
+    opcache \
+    sockets \
+    zip \
+    exif \
+    pdo_mysql \
+    mysqli \
+    && docker-php-ext-enable pdo_mysql
+
+# 🔹 Cài Xdebug (nếu cần)
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
+# 🔹 Cài Redis thủ công từ source (phpredis)
+RUN docker-php-source extract \
+    && git clone --branch 6.0.2 https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis \
+    && docker-php-ext-install redis \
+    && docker-php-source delete
+
+# Apache document root
+ENV APACHE_DOCUMENT_ROOT /var/www/html
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+
+# Composer
+RUN curl -sS https://getcomposer.org/installer | php -- \
+    --install-dir=/usr/local/bin \
+    --filename=composer \
+    --version=$COMPOSER_VERSION
+
+# Apache rewrite
+RUN a2enmod rewrite
+
+# Tạo user
+RUN useradd -ms /bin/bash -u 1000 app
