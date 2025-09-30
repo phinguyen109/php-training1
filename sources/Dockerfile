@@ -1,10 +1,14 @@
 FROM php:8.3.9-apache
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Declare composer version
 =======
 # Composer version
 >>>>>>> lab3-redis_localstogare
+=======
+# Composer version
+>>>>>>> lab4-csrf
 ENV COMPOSER_VERSION=2.7.7
 
 RUN apt-get update \
@@ -21,10 +25,15 @@ RUN apt-get update \
     gnupg \
     tzdata \
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     pkg-config \
     libssl-dev \
 >>>>>>> lab3-redis_localstogare
+=======
+    pkg-config \
+    libssl-dev \
+>>>>>>> lab4-csrf
     && docker-php-ext-install \
     bcmath \
     gd \
@@ -36,6 +45,7 @@ RUN apt-get update \
     mysqli \
     && docker-php-ext-enable pdo_mysql
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
@@ -55,6 +65,8 @@ RUN useradd -ms /bin/bash -u 1000 app
 
 #CMD [ "start" ]
 =======
+=======
+>>>>>>> lab4-csrf
 # 🔹 Cài Xdebug (nếu cần)
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
@@ -80,4 +92,7 @@ RUN a2enmod rewrite
 
 # Tạo user
 RUN useradd -ms /bin/bash -u 1000 app
+<<<<<<< HEAD
 >>>>>>> lab3-redis_localstogare
+=======
+>>>>>>> lab4-csrf
