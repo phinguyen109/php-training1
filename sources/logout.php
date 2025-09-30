@@ -1,4 +1,10 @@
 <?php
+<<<<<<< HEAD
+session_start();
+session_destroy();
+header('location: login.php');
+?>
+=======
 // logout.php (ngắn, thực tế)
 session_start();
 
@@ -39,3 +45,4 @@ setcookie('session_id', '', time() - 3600, '/', '', false, true);
 </body>
 
 </html>
+>>>>>>> lab4-csrf
