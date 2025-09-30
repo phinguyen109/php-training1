@@ -9,6 +9,9 @@ services:
     container_name: web-backend
     ports:
 <<<<<<< HEAD
+      - 8080:80
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
       - "8080:80"
 =======
@@ -17,6 +20,7 @@ services:
 =======
       - 8080:80
 >>>>>>> lab4-csrf
+>>>>>>> main
     volumes:
       - ./:/var/www/html
       - ./config/backend/php.ini:/usr/local/etc/php/php.ini
@@ -26,6 +30,10 @@ services:
       APP_ENV: local
     depends_on:
       - web-mysql
+<<<<<<< HEAD
+      - web-redis   # thêm redis dependency
+    restart: always
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
     restart: always
@@ -45,11 +53,15 @@ services:
       - web-redis   # thêm redis dependency
     restart: always
 >>>>>>> lab4-csrf
+>>>>>>> main
 
   web-mysql:
     container_name: web-mysql
     image: "mysql:5.7.43"
     ports:
+<<<<<<< HEAD
+      - 3306:3306
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
       - "3306:3306"
@@ -59,6 +71,7 @@ services:
 =======
       - 3306:3306
 >>>>>>> lab4-csrf
+>>>>>>> main
     volumes:
       - mysql-data:/var/lib/mysql
       - ./database/app_web1.sql:/docker-entrypoint-initdb.d/app_web1.sql
@@ -80,10 +93,13 @@ services:
       PMA_HOST: web-mysql
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
 >>>>>>> lab4-csrf
+>>>>>>> main
 
   web-redis:             # service redis mới
     container_name: web-redis
@@ -92,6 +108,9 @@ services:
     ports:
       - "6379:6379"       # expose cổng redis
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 >>>>>>> lab3-redis_localstogare
 =======
 >>>>>>> lab4-csrf
+>>>>>>> main

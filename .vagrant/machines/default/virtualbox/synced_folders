@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/php-crud-education/sources","disabled":false,"__vagrantfile":true}}}
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 {"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/vagrant-training/sources","disabled":false,"__vagrantfile":true}}}
 =======
@@ -7,3 +10,4 @@
 =======
 {"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/php-crud-education/sources","disabled":false,"__vagrantfile":true}}}
 >>>>>>> lab4-csrf
+>>>>>>> main
