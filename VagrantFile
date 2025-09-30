@@ -6,14 +6,6 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/focal64"
   config.vm.box_version = "20240821.0.1"
 
-<<<<<<< HEAD
-  # Network - forward port từ guest VM -> host máy thật
-  config.vm.network "forwarded_port", guest: 8080, host: 8085   # Web backend
-  config.vm.network "forwarded_port", guest: 8081, host: 8086   # PhpMyAdmin
-  config.vm.network "forwarded_port", guest: 3306, host: 3307   # MySQL
-
-  # Sync folder (code trong ./sources map vào /vagrant của VM)
-=======
   # Network
   # Forward port từ guest VM -> host máy bạn
   config.vm.network "forwarded_port", guest: 8080, host: 8080   # web-backend
@@ -21,7 +13,6 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 3306, host: 3306   # MySQL
 
   # Sync folder
->>>>>>> main
   config.vm.synced_folder "./sources", "/vagrant"
 
   # VirtualBox provider

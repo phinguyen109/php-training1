@@ -71,4 +71,8 @@ abstract class BaseModel {
         return $result;
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

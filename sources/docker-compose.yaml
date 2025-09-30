@@ -8,7 +8,19 @@ services:
     build: ./config/backend
     container_name: web-backend
     ports:
+<<<<<<< HEAD
       - 8080:80
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+      - "8080:80"
+=======
+      - 8080:80
+>>>>>>> lab3-redis_localstogare
+=======
+      - 8080:80
+>>>>>>> lab4-csrf
+>>>>>>> main
     volumes:
       - ./:/var/www/html
       - ./config/backend/php.ini:/usr/local/etc/php/php.ini
@@ -18,14 +30,48 @@ services:
       APP_ENV: local
     depends_on:
       - web-mysql
+<<<<<<< HEAD
       - web-redis   # thêm redis dependency
     restart: always
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    restart: always
+    command: >
+      bash -c "
+      sed -i 's|DocumentRoot .*|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf &&
+      echo '<Directory /var/www/html/public>\n    AllowOverride All\n    Require all granted\n</Directory>' > /etc/apache2/conf-available/laravel.conf &&
+      a2enmod rewrite &&
+      a2enconf laravel &&
+      apache2-foreground
+      "
+=======
+      - web-redis   # thêm redis dependency
+    restart: always
+>>>>>>> lab3-redis_localstogare
+=======
+      - web-redis   # thêm redis dependency
+    restart: always
+>>>>>>> lab4-csrf
+>>>>>>> main
 
   web-mysql:
     container_name: web-mysql
     image: "mysql:5.7.43"
     ports:
+<<<<<<< HEAD
       - 3306:3306
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+      - "3306:3306"
+=======
+      - 3306:3306
+>>>>>>> lab3-redis_localstogare
+=======
+      - 3306:3306
+>>>>>>> lab4-csrf
+>>>>>>> main
     volumes:
       - mysql-data:/var/lib/mysql
       - ./database/app_web1.sql:/docker-entrypoint-initdb.d/app_web1.sql
@@ -46,10 +92,26 @@ services:
     environment:
       PMA_HOST: web-mysql
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> lab4-csrf
+>>>>>>> main
 
   web-redis:             # service redis mới
     container_name: web-redis
     image: redis:7-alpine
     restart: always
     ports:
+<<<<<<< HEAD
       - "6379:6379"       # expose cổng redis
+=======
+      - "6379:6379"       # expose cổng redis
+<<<<<<< HEAD
+>>>>>>> lab3-redis_localstogare
+=======
+>>>>>>> lab4-csrf
+>>>>>>> main
