@@ -1,6 +1,10 @@
 FROM php:8.3.9-apache
 
+<<<<<<< HEAD
+# Declare composer version
+=======
 # Composer version
+>>>>>>> lab3-redis_localstogare
 ENV COMPOSER_VERSION=2.7.7
 
 RUN apt-get update \
@@ -16,8 +20,11 @@ RUN apt-get update \
     libexif-dev \
     gnupg \
     tzdata \
+<<<<<<< HEAD
+=======
     pkg-config \
     libssl-dev \
+>>>>>>> lab3-redis_localstogare
     && docker-php-ext-install \
     bcmath \
     gd \
@@ -29,6 +36,25 @@ RUN apt-get update \
     mysqli \
     && docker-php-ext-enable pdo_mysql
 
+<<<<<<< HEAD
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
+ENV APACHE_DOCUMENT_ROOT /var/www/html
+
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+
+# Install Composer with specified version
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=$COMPOSER_VERSION
+
+RUN a2enmod rewrite
+
+RUN useradd -ms /bin/bash -u 1000 app
+
+#COPY start /usr/local/bin/
+
+#CMD [ "start" ]
+=======
 # 🔹 Cài Xdebug (nếu cần)
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
@@ -54,3 +80,4 @@ RUN a2enmod rewrite
 
 # Tạo user
 RUN useradd -ms /bin/bash -u 1000 app
+>>>>>>> lab3-redis_localstogare
