@@ -2,20 +2,32 @@
 
 require_once 'BaseModel.php';
 
+<<<<<<< HEAD
 class UserModel extends BaseModel
 {
 
     public function findUserById($id)
     {
         $sql = 'SELECT * FROM users WHERE id = ' . $id;
+=======
+class UserModel extends BaseModel {
+
+    public function findUserById($id) {
+        $sql = 'SELECT * FROM users WHERE id = '.$id;
+>>>>>>> main
         $user = $this->select($sql);
 
         return $user;
     }
 
+<<<<<<< HEAD
     public function findUser($keyword)
     {
         $sql = 'SELECT * FROM users WHERE user_name LIKE %' . $keyword . '%' . ' OR user_email LIKE %' . $keyword . '%';
+=======
+    public function findUser($keyword) {
+        $sql = 'SELECT * FROM users WHERE user_name LIKE %'.$keyword.'%'. ' OR user_email LIKE %'.$keyword.'%';
+>>>>>>> main
         $user = $this->select($sql);
 
         return $user;
@@ -27,6 +39,7 @@ class UserModel extends BaseModel
      * @param $password
      * @return array
      */
+<<<<<<< HEAD
     public function auth($userName, $password)
     {
         // Giữ nguyên hashing MD5 như logic hiện tại
@@ -63,15 +76,32 @@ class UserModel extends BaseModel
     }
 
 
+=======
+    public function auth($userName, $password) {
+        $md5Password = md5($password);
+        $sql = 'SELECT * FROM users WHERE name = "' . $userName . '" AND password = "'.$md5Password.'"';
+
+        $user = $this->select($sql);
+        return $user;
+    }
+
+>>>>>>> main
     /**
      * Delete user by id
      * @param $id
      * @return mixed
      */
+<<<<<<< HEAD
     public function deleteUserById($id)
     {
         $sql = 'DELETE FROM users WHERE id = ' . $id;
         return $this->delete($sql);
+=======
+    public function deleteUserById($id) {
+        $sql = 'DELETE FROM users WHERE id = '.$id;
+        return $this->delete($sql);
+
+>>>>>>> main
     }
 
     /**
@@ -79,11 +109,18 @@ class UserModel extends BaseModel
      * @param $input
      * @return mixed
      */
+<<<<<<< HEAD
     public function updateUser($input)
     {
         $sql = 'UPDATE users SET 
                  name = "' . mysqli_real_escape_string(self::$_connection, $input['name']) . '", 
                  password="' . md5($input['password']) . '"
+=======
+    public function updateUser($input) {
+        $sql = 'UPDATE users SET 
+                 name = "' . mysqli_real_escape_string(self::$_connection, $input['name']) .'", 
+                 password="'. md5($input['password']) .'"
+>>>>>>> main
                 WHERE id = ' . $input['id'];
 
         $user = $this->update($sql);
@@ -96,10 +133,16 @@ class UserModel extends BaseModel
      * @param $input
      * @return mixed
      */
+<<<<<<< HEAD
     public function insertUser($input)
     {
         $sql = "INSERT INTO `app_web1`.`users` (`name`, `password`) VALUES (" .
             "'" . $input['name'] . "', '" . md5($input['password']) . "')";
+=======
+    public function insertUser($input) {
+        $sql = "INSERT INTO `app_web1`.`users` (`name`, `password`) VALUES (" .
+                "'" . $input['name'] . "', '".md5($input['password'])."')";
+>>>>>>> main
 
         $user = $this->insert($sql);
 
@@ -111,11 +154,18 @@ class UserModel extends BaseModel
      * @param array $params
      * @return array
      */
+<<<<<<< HEAD
     public function getUsers($params = [])
     {
         //Keyword
         if (!empty($params['keyword'])) {
             $sql = 'SELECT * FROM users WHERE name LIKE "%' . $params['keyword'] . '%"';
+=======
+    public function getUsers($params = []) {
+        //Keyword
+        if (!empty($params['keyword'])) {
+            $sql = 'SELECT * FROM users WHERE name LIKE "%' . $params['keyword'] .'%"';
+>>>>>>> main
 
             //Keep this line to use Sql Injection
             //Don't change
@@ -131,4 +181,8 @@ class UserModel extends BaseModel
 
         return $users;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main
